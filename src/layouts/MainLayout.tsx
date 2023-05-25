@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
 import Image from "../components/common/Image";
+import NavigationBar from "../components/common/NavigationBar";
 import { color } from "../styles/color";
 
 interface PropsType {
@@ -16,7 +17,10 @@ const MainLayout = ({ children }: PropsType) => {
         width="360px"
         height="520px"
       />
-      <FrameMainBox>{children}</FrameMainBox>
+      <FrameMainBox>
+        {children}
+        <NavigationBar />
+      </FrameMainBox>
     </StyledMainLayout>
   );
 };
@@ -35,8 +39,10 @@ const StyledMainLayout = styled.section`
 `;
 
 const FrameMainBox = styled.div`
+  position: relative;
   width: 440px;
   height: 100%;
   background-color: ${color.white};
   box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 8px;
+  overflow: auto;
 `;
