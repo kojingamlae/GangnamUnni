@@ -1,38 +1,39 @@
 import styled from "styled-components";
-import ColumnIcon from "../Icon/Column";
-import CommunityIcon from "../Icon/Community";
-import EventIcon from "../Icon/Event";
-import HomeIcon from "../Icon/Home";
-import LocationIcon from "../Icon/Location";
-import NavigationItem from "./NavigationItem";
+import ColumnIcon from "./Icon/Column";
+import CommunityIcon from "./Icon/Community";
+import EventIcon from "./Icon/Event";
+import HomeIcon from "./Icon/Home";
+import LocationIcon from "./Icon/Location";
+import NavigationLink from "./NavigationLink";
 
 const NavigationBar = () => {
   return (
     <StyledNavigationBar>
-      <NavigationItem>
-        <HomeIcon />
-        <NavigationText>홈</NavigationText>
-      </NavigationItem>
-
-      <NavigationItem>
-        <LocationIcon />
-        <NavigationText>병원</NavigationText>
-      </NavigationItem>
-
-      <NavigationItem>
-        <EventIcon />
-        <NavigationText>이벤트</NavigationText>
-      </NavigationItem>
-
-      <NavigationItem>
-        <CommunityIcon />
-        <NavigationText>커뮤니티</NavigationText>
-      </NavigationItem>
-
-      <NavigationItem>
-        <ColumnIcon />
-        <NavigationText>칼럼</NavigationText>
-      </NavigationItem>
+      <NavigationLink
+        onClick={() => console.log("test")}
+        icon={<HomeIcon />}
+        text="홈"
+      />
+      <NavigationLink
+        onClick={() => console.log("test")}
+        icon={<LocationIcon />}
+        text="병원"
+      />
+      <NavigationLink
+        onClick={() => console.log("test")}
+        icon={<EventIcon />}
+        text="이벤트"
+      />
+      <NavigationLink
+        onClick={() => console.log("test")}
+        icon={<CommunityIcon />}
+        text="커뮤니티"
+      />
+      <NavigationLink
+        onClick={() => console.log("test")}
+        icon={<ColumnIcon />}
+        text="칼럼"
+      />
     </StyledNavigationBar>
   );
 };
@@ -48,12 +49,4 @@ const StyledNavigationBar = styled.div`
   height: 65px;
   width: 100%;
   border-top: 1px solid #d6d6d6;
-`;
-
-const NavigationText = styled.p`
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 16px;
-  letter-spacing: 0px;
-  color: #666666;
 `;
