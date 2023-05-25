@@ -1,14 +1,42 @@
+import { ReactNode } from "react";
 import styled from "styled-components";
+import Image from "../components/common/Image";
 import { color } from "../styles/color";
 
-const MainLayout = () => {
-  return <StyledMainLayout>as</StyledMainLayout>;
+interface PropsType {
+  children: ReactNode;
+}
+
+const MainLayout = ({ children }: PropsType) => {
+  return (
+    <StyledMainLayout>
+      <Image
+        src="/assets/brand-film.png"
+        alt="brand-film"
+        width="360px"
+        height="520px"
+      />
+      <FrameMainBox>{children}</FrameMainBox>
+    </StyledMainLayout>
+  );
 };
 
 export default MainLayout;
 
 const StyledMainLayout = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
   background-color: #f5f5f5;
   width: 100vw;
   height: 100vh;
+`;
+
+const FrameMainBox = styled.div`
+  width: 440px;
+  height: 100%;
+  background-color: ${color.white};
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 8px;
 `;
