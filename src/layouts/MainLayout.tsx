@@ -1,3 +1,4 @@
+import Header from "components/common/Header";
 import { ReactNode } from "react";
 import styled from "styled-components";
 import Image from "../components/common/Image";
@@ -18,6 +19,7 @@ const MainLayout = ({ children }: PropsType) => {
         height="520px"
       />
       <FrameMainBox>
+        <Header />
         {children}
         <NavigationBar />
       </FrameMainBox>
@@ -40,7 +42,7 @@ const StyledMainLayout = styled.section`
 
 const FrameMainBox = styled.div`
   position: relative;
-  width: 440px;
+  min-width: 440px;
   height: 100%;
   background-color: ${color.white};
   box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 8px;
