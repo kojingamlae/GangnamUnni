@@ -42,11 +42,10 @@ export default NavigationBar;
 
 const StyledNavigationBar = styled.div`
   position: sticky;
+  bottom: 0;
   display: flex;
   align-items: center;
   position: absolute;
-  bottom: 0;
-  left: 0;
   height: 65px;
   width: 100%;
   border-top: 1px solid #d6d6d6;

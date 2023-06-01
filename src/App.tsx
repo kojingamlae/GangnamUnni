@@ -1,8 +1,8 @@
+import MainScreen from "app/Main";
 import React from "react";
-import MainLayout from "./layouts/MainLayout";
 
 const App = () => {
-  return <MainLayout>안녕하세요 !</MainLayout>;
+  return <MainScreen />;
 };
 
 export default App;
