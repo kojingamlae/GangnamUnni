@@ -34,10 +34,10 @@ const StyledMainLayout = styled.section`
   justify-content: center;
   align-items: center;
   gap: 16px;
-
   background-color: #f5f5f5;
   width: 100vw;
   height: 100vh;
+  word-break: break-all;
 `;
 
 const FrameMainBox = styled.div`

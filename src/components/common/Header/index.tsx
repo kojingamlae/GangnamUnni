@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { color } from "styles/color";
 import Image from "../Image";
 import ProfileIcon from "./Icon/Profile";
 
@@ -23,11 +24,15 @@ const Header = () => {
 export default Header;
 
 const StyledHeader = styled.div`
-  padding: 0px 13px;
+  background-color: ${color.white};
+  z-index: 10;
   position: sticky;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0px 13px;
   width: 100%;
   height: 48px;
 `;
