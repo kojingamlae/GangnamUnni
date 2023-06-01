@@ -21,7 +21,6 @@ export default Banner;
 
 const BannerSection = styled.div`
   padding: 16px 26px 32px;
-  border: 1px solid black;
 `;
 
 const StyledBanner = styled.div`
