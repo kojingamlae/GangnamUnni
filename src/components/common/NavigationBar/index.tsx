@@ -1,38 +1,65 @@
 import styled from "styled-components";
-import ColumnIcon from "./Icon/Column";
-import CommunityIcon from "./Icon/Community";
-import EventIcon from "./Icon/Event";
 import HomeIcon from "./Icon/Home";
-import LocationIcon from "./Icon/Location";
 import NavigationLink from "./NavigationLink";
+import LocationIcon from "./Icon/Location";
+import { color } from "styles/color";
+import CommunityIcon from "./Icon/Community";
+import ColumnIcon from "./Icon/Column";
+import { useState } from "react";
+import EventIcon from "./Icon/Event";
 
 const NavigationBar = () => {
+  const [selectedLink, setSelectedLink] = useState("home");
+
   return (
     <StyledNavigationBar>
       <NavigationLink
-        onClick={() => console.log("test")}
-        icon={<HomeIcon />}
+        onClick={() => setSelectedLink("home")}
+        icon={
+          <HomeIcon fill={selectedLink === "home" ? color.orange : "#4C4C4C"} />
+        }
         text="홈"
+        isSelected={selectedLink === "home"}
       />
       <NavigationLink
-        onClick={() => console.log("test")}
-        icon={<LocationIcon />}
+        onClick={() => setSelectedLink("location")}
+        icon={
+          <LocationIcon
+            fill={selectedLink === "location" ? color.orange : "#4C4C4C"}
+          />
+        }
         text="병원"
+        isSelected={selectedLink === "location"}
       />
       <NavigationLink
-        onClick={() => console.log("test")}
-        icon={<EventIcon />}
+        onClick={() => setSelectedLink("event")}
+        icon={
+          <EventIcon
+            fill={selectedLink === "event" ? color.orange : "#4C4C4C"}
+          />
+        }
         text="이벤트"
+        isSelected={selectedLink === "event"}
       />
       <NavigationLink
-        onClick={() => console.log("test")}
-        icon={<CommunityIcon />}
+        onClick={() => setSelectedLink("community")}
+        icon={
+          <CommunityIcon
+            fill={selectedLink === "community" ? color.orange : "#4C4C4C"}
+          />
+        }
         text="커뮤니티"
+        isSelected={selectedLink === "community"}
       />
       <NavigationLink
-        onClick={() => console.log("test")}
-        icon={<ColumnIcon />}
+        onClick={() => setSelectedLink("column")}
+        icon={
+          <ColumnIcon
+            fill={selectedLink === "column" ? color.orange : "#4C4C4C"}
+          />
+        }
         text="칼럼"
+        isSelected={selectedLink === "column"}
       />
     </StyledNavigationBar>
   );

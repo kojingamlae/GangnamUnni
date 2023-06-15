@@ -1,17 +1,21 @@
-import { ReactNode } from "react";
 import styled from "styled-components";
+import { color } from "styles/color";
+import { ReactNode } from "react";
 
 interface PropsType {
   icon: ReactNode;
   text: string;
   onClick: () => void;
+  isSelected: boolean;
 }
 
-const NavigationLink = ({ icon, text, onClick }: PropsType) => {
+const NavigationLink = ({ icon, text, onClick, isSelected }: PropsType) => {
   return (
     <StyledNavigationLink onClick={onClick}>
       {icon}
-      <NavigationText>{text}</NavigationText>
+      <NavigationText color={isSelected ? color.orange : "#666666"}>
+        {text}
+      </NavigationText>
     </StyledNavigationLink>
   );
 };
@@ -33,5 +37,5 @@ const NavigationText = styled.p`
   font-weight: 500;
   line-height: 16px;
   letter-spacing: 0px;
-  color: #666666;
+  color: ${(props) => props.color};
 `;
