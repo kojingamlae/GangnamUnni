@@ -15,6 +15,7 @@ const Category = ({ name, icon }: PropsType) => {
         width="40px"
         height="40px"
         alt="category-icon"
+        cursor="pointer"
       />
       <CategoryName>{name}</CategoryName>
     </StyledCategory>
@@ -27,6 +28,7 @@ const StyledCategory = styled.a`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   width: 91px;
   height: 86px;
