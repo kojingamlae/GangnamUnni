@@ -1,4 +1,5 @@
 import Banner from "components/main/Banner";
+import Categories from "components/main/Categories";
 import SearchInput from "components/main/SearchInput";
 
 import MainLayout from "layouts/MainLayout";
@@ -10,6 +11,7 @@ const MainScreen = () => {
       <StyledMainScreen>
         <SearchInput />
         <Banner />
+        <Categories />
       </StyledMainScreen>
     </MainLayout>
   );
