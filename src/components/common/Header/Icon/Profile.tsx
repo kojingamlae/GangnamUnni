@@ -1,4 +1,6 @@
-const ProfileIcon = () => {
+import { IconPropsType } from "types/Icon";
+
+const ProfileIcon = ({ cursor, onClick }: IconPropsType) => {
   return (
     <svg
       width="24"
@@ -6,7 +8,8 @@ const ProfileIcon = () => {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      cursor="pointer"
+      cursor={cursor}
+      onClick={onClick}
     >
       <path
         id="Combined Shape"

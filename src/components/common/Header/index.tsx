@@ -16,7 +16,7 @@ const Header = () => {
           cursor="pointer"
         />
       </HeaderLogoWrapper>
-      <ProfileIcon />
+      <ProfileIcon cursor="pointer" />
     </StyledHeader>
   );
 };

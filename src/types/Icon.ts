@@ -1,3 +1,5 @@
 export interface IconPropsType {
-  fill: string;
+  fill?: string;
+  cursor?: "pointer" | "default";
+  onClick?: () => void;
 }

@@ -1,19 +1,13 @@
-import Image from "components/common/Image";
 import { color } from "styles/color";
 import styled from "styled-components";
+import SearchIcon from "./Icon/Search";
 
 const SearchInput = () => {
   return (
     <SearchInputSection>
       <SearchInputWrapper>
         <StyledSearchInput placeholder="궁금한 시술, 병원 이름을 검색해보세요" />
-        <Image
-          src="/assets/search.svg"
-          width="30px"
-          height="30px"
-          cursor="pointer"
-          alt="search"
-        />
+        <SearchIcon cursor="pointer" />
       </SearchInputWrapper>
     </SearchInputSection>
   );
