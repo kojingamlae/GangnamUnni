@@ -5,10 +5,10 @@ import SearchIcon from "./Icon/Search";
 const SearchInput = () => {
   return (
     <SearchInputSection>
-      <SearchInputWrapper>
-        <StyledSearchInput placeholder="궁금한 시술, 병원 이름을 검색해보세요" />
+      <StyledSearchInput>
+        <Input placeholder="궁금한 시술, 병원 이름을 검색해보세요" />
         <SearchIcon cursor="pointer" />
-      </SearchInputWrapper>
+      </StyledSearchInput>
     </SearchInputSection>
   );
 };
@@ -19,7 +19,7 @@ const SearchInputSection = styled.div`
   padding: 16px 26px 0px;
 `;
 
-const SearchInputWrapper = styled.div`
+const StyledSearchInput = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -29,7 +29,7 @@ const SearchInputWrapper = styled.div`
   padding: 7px;
 `;
 
-const StyledSearchInput = styled.input`
+const Input = styled.input`
   width: 100%;
   height: 100%;
   font-size: 14px;

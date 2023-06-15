@@ -11,6 +11,7 @@ const SearchIcon = ({ cursor, onClick }: IconPropsType) => {
       cursor={cursor}
       onClick={onClick}
     >
+      <rect width="30" height="30" rx="15" fill="#FF540F"></rect>
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"
