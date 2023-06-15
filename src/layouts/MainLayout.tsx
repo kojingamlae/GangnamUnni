@@ -37,7 +37,6 @@ const StyledMainLayout = styled.section`
   background-color: #f5f5f5;
   width: 100vw;
   height: 100vh;
-  word-break: break-all;
 `;
 
 const FrameMainBox = styled.div`
@@ -47,4 +46,5 @@ const FrameMainBox = styled.div`
   background-color: ${color.white};
   box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 8px;
   overflow: auto;
+  word-break: break-all;
 `;

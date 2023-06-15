@@ -25,7 +25,7 @@ export default Header;
 
 const StyledHeader = styled.div`
   background-color: ${color.white};
-  z-index: 10;
+  z-index: 1;
   position: sticky;
   top: 0;
   left: 0;
