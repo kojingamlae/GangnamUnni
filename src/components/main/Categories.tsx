@@ -20,6 +20,7 @@ export default Categories;
 
 const CategoriesSection = styled.div`
   width: 100%;
+  padding-bottom: 32px;
 `;
 
 const Title = styled.p`

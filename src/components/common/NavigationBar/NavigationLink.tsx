@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { color } from "styles/color";
 import { ReactNode } from "react";
+import flex from "utils/flex";
 
 interface PropsType {
   icon: ReactNode;
@@ -23,10 +24,11 @@ const NavigationLink = ({ icon, text, onClick, isSelected }: PropsType) => {
 export default NavigationLink;
 
 const StyledNavigationLink = styled.a`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  ${flex({
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+  })}
   width: 88px;
   height: 100%;
   cursor: pointer;

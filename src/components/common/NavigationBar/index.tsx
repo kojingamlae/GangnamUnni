@@ -7,6 +7,7 @@ import CommunityIcon from "./Icon/Community";
 import ColumnIcon from "./Icon/Column";
 import { useState } from "react";
 import EventIcon from "./Icon/Event";
+import flex from "utils/flex";
 
 const NavigationBar = () => {
   const [selectedLink, setSelectedLink] = useState("home");
@@ -68,12 +69,12 @@ const NavigationBar = () => {
 export default NavigationBar;
 
 const StyledNavigationBar = styled.div`
+  ${flex({ alignItems: "center" })}
   position: sticky;
   bottom: 0;
-  display: flex;
-  align-items: center;
-  position: absolute;
+  left: 0;
   height: 65px;
   width: 100%;
   border-top: 1px solid #d6d6d6;
+  background-color: ${color.white};
 `;

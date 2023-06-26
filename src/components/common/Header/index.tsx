@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { color } from "styles/color";
+import flex from "utils/flex";
 import Image from "../Image";
 import ProfileIcon from "./Icon/Profile";
 
@@ -24,28 +25,25 @@ const Header = () => {
 export default Header;
 
 const StyledHeader = styled.div`
+  ${flex({ alignItems: "center", justifyContent: "space-between" })}
   background-color: ${color.white};
-  z-index: 10;
+  z-index: 1;
   position: sticky;
   top: 0;
   left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: 0px 13px;
   width: 100%;
   height: 48px;
 `;
 
 const HeaderLogoWrapper = styled.div`
+  ${flex({ alignItems: "center" })}
   width: calc(100% - 180px);
   height: 100%;
   left: 90px;
   top: 0px;
   position: absolute;
-  display: flex;
   -webkit-box-pack: center;
   justify-content: center;
   -webkit-box-align: center;
-  align-items: center;
 `;
