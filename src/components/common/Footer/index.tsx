@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Column from "../Flex/Column";
 import Image from "../Image";
 
 const Footer = () => {
@@ -8,10 +9,12 @@ const Footer = () => {
         <Image src="/assets/logo.svg" width="86px" height="16px" alt="logo" />
       </LogoBox>
       <Company>Company</Company>
-      <Link>병원입점신청</Link>
-      <Link>PR</Link>
-      <Link>인재 영입</Link>
-      <Link>이용약관.개인정보처리방침.위치기반서비스 이용약관</Link>
+      <Column gap="8px">
+        <Link>병원입점신청</Link>
+        <Link>PR</Link>
+        <Link>인재 영입</Link>
+        <Link>이용약관.개인정보처리방침.위치기반서비스 이용약관</Link>
+      </Column>
     </StyledFooter>
   );
 };
