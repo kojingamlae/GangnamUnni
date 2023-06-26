@@ -17,6 +17,7 @@ export default SurgeryItem;
 
 const StyledSurgeryItem = styled.div`
   width: calc(50% - 8px);
+  cursor: pointer;
 `;
 
 const SurgeryImage = styled.img`
