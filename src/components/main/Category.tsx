@@ -1,6 +1,7 @@
 import Image from "components/common/Image";
 import styled from "styled-components";
 import { color } from "styles/color";
+import flex from "utils/flex";
 
 interface PropsType {
   name: string;
@@ -25,10 +26,11 @@ const Category = ({ name, icon }: PropsType) => {
 export default Category;
 
 const StyledCategory = styled.a`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  ${flex({
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+  })}
   gap: 10px;
   width: 91px;
   height: 86px;
