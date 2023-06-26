@@ -29,7 +29,7 @@ const StyledNavigationLink = styled.a`
     alignItems: "center",
     justifyContent: "center",
   })}
-  width: 88px;
+  width: calc(100% / 4);
   height: 100%;
   cursor: pointer;
 `;
