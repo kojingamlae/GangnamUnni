@@ -57,7 +57,7 @@ const BrandFilmBox = styled.div`
 
 const FrameMainBox = styled.div`
   position: relative;
-  min-width: 440px;
+  width: 440px;
   height: 100%;
   background-color: ${color.white};
   box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 8px;

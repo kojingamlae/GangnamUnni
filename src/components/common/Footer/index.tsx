@@ -56,7 +56,7 @@ const Section = styled.div`
 `;
 
 const Title = styled.p`
-  color: rgb(102, 102, 102);
+  color: #666666;
   font-size: 14px;
   font-weight: bold;
   line-height: 20px;
@@ -66,7 +66,7 @@ const Title = styled.p`
 
 const Link = styled.a`
   display: block;
-  color: rgb(102, 102, 102);
+  color: #666666;
   font-size: 12px;
   font-weight: normal;
   line-height: 16px;
@@ -74,7 +74,7 @@ const Link = styled.a`
 `;
 
 const CompanyInfo = styled.p`
-  color: rgb(136, 136, 136);
+  color: #888888;
   font-size: 12px;
   font-weight: normal;
   line-height: 16px;
@@ -82,7 +82,7 @@ const CompanyInfo = styled.p`
 `;
 
 const Copyright = styled.p`
-  color: rgb(102, 102, 102);
+  color: #666666;
   font-size: 12px;
   font-weight: normal;
   line-height: 16px;
