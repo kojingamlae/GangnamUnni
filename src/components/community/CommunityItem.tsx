@@ -1,26 +1,24 @@
 import Row from "components/common/Flex/Row";
+import { CommunityItemDataType } from "data/list/community";
 import styled from "styled-components";
 import { color } from "styles/color";
 import flex from "utils/flex";
 import ReactionBar from "../search-result/ReactionBar";
 
-const CommunityItem = () => {
+const CommunityItem = ({ ...props }: CommunityItemDataType) => {
   return (
     <>
       <StyledCommunityItem>
         <Row alignItems="center">
           <Profile src="/assets/profile/profile.png" />
-          <Name>푸존</Name>
+          <Name>{props.name}</Name>
           <Dot />
-          <Level>Lv.4</Level>
+          <Level>Lv.{props.level}</Level>
           <Dot />
-          <CreateTime>약 24시간 전</CreateTime>
+          <CreateTime>{props.createTime}일 전</CreateTime>
         </Row>
         <ContentBox>
-          <Content>
-            남자눈 있잖아 쌍수 말고 눈매교정만 해도 훨씬 더 괜찮아질까? 눈꺼풀도
-            처지고 눈이 좀 답답해보이거든 그리구
-          </Content>
+          <Content>{props.content}</Content>
         </ContentBox>
       </StyledCommunityItem>
       <ReactionBar />

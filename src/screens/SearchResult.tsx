@@ -11,6 +11,8 @@ import styled from "styled-components";
 import { color } from "styles/color";
 import flex from "utils/flex";
 import { HOSPITAL_LIST_DATA } from "data/list/hospital";
+import { EVENT_LIST_DATA } from "data/list/event";
+import { COMMUNITY_LIST_DATA } from "data/list/community";
 
 const SearchResultScreen = () => {
   const { category } = useParams();
@@ -28,11 +30,11 @@ const SearchResultScreen = () => {
         <SearchResultStatus>'{category}'에 대한 검색결과</SearchResultStatus>
         <EventBox>
           <EventText>
-            이벤트<NumberOfEvent>714</NumberOfEvent>건
+            이벤트<NumberOfEvent>2</NumberOfEvent>건
           </EventText>
           <EventList>
-            {[0, 1, 2, 3].map((item) => (
-              <EventItem key={item} />
+            {EVENT_LIST_DATA.slice(0, 2).map((item) => (
+              <EventItem {...item} />
             ))}
           </EventList>
         </EventBox>
@@ -40,9 +42,9 @@ const SearchResultScreen = () => {
           '{category}' 커뮤니티<NumberOfCommunity>714</NumberOfCommunity>건
         </CommunityText>
         <CommunityList>
-          {[0, 1, 2, 3].map((item) => (
+          {COMMUNITY_LIST_DATA.map((item) => (
             <>
-              <CommunityItem key={item} />
+              <CommunityItem {...item} />
               <Bar />
             </>
           ))}

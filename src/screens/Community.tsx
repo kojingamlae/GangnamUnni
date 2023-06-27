@@ -13,6 +13,7 @@ import PeopleIcon from "components/community/Icon/People";
 import { useState } from "react";
 import flex from "utils/flex";
 import CommunityItem from "components/community/CommunityItem";
+import { COMMUNITY_LIST_DATA } from "data/list/community";
 
 const CommunityScreen = () => {
   const [selectedCategory, setSelectedCategory] = useState("베스트");
@@ -60,8 +61,8 @@ const CommunityScreen = () => {
           />
         </CommunityCategories>
         <CommunityList>
-          {[0, 1, 2, 3].map((item) => (
-            <CommunityItem />
+          {COMMUNITY_LIST_DATA.map((item) => (
+            <CommunityItem {...item} />
           ))}
         </CommunityList>
       </StyledCommunituScreen>

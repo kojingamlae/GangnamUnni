@@ -1,22 +1,27 @@
+import { useState } from "react";
 import styled from "styled-components";
 import CommentIcon from "./Icon/Comment";
 import LikeIcon from "./Icon/Like";
 import ViewIcon from "./Icon/View";
 
 const ReactionBar = () => {
+  const [like, setLike] = useState(0);
+
+  const toggleLike = () => setLike((prev) => (!prev ? prev + 1 : prev - 1));
+
   return (
     <StyledReactionBar>
-      <Button>
+      <Button onClick={toggleLike}>
         <LikeIcon />
-        좋아요 0
+        좋아요 {like}
       </Button>
       <Button>
         <CommentIcon />
-        답변 51
+        답변 0
       </Button>
       <Button>
         <ViewIcon />
-        조회 17
+        조회 0
       </Button>
     </StyledReactionBar>
   );
