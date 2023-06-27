@@ -11,10 +11,10 @@ interface PropsType {
 
 const Category = ({ name, icon }: PropsType) => {
   const navigate = useNavigate();
-  name = name.replace("/", "");
+  const linkName = name.replace("/", "");
 
   return (
-    <StyledCategory onClick={() => navigate(`/search/result/${name}`)}>
+    <StyledCategory onClick={() => navigate(`/search/result/${linkName}`)}>
       <Image
         src={`/assets/category/${icon}.png`}
         width="40px"
