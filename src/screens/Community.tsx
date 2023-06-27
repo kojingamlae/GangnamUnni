@@ -1,4 +1,4 @@
-import Layout from "layouts/Layout";
+import Layout from "components/common/Layout";
 import styled from "styled-components";
 import Row from "components/common/Flex/Row";
 import { color } from "styles/color";

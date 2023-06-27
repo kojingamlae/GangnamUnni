@@ -5,11 +5,12 @@ import EventItem from "components/event/EventItem";
 import HospitalItem from "components/hospital/HospitalItem";
 import MiniLogoIcon from "components/search-result/Icon/MiniLogo";
 import MiniRightArrowIcon from "components/search-result/Icon/MiniRightArrow";
-import Layout from "layouts/Layout";
+import Layout from "components/common/Layout";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { color } from "styles/color";
 import flex from "utils/flex";
+import { HOSPITAL_LIST_DATA } from "data/list/hospital";
 
 const SearchResultScreen = () => {
   const { category } = useParams();
@@ -47,11 +48,11 @@ const SearchResultScreen = () => {
           ))}
         </CommunityList>
         <HospitalText>
-          병원<NumberOfHospital>714</NumberOfHospital>건
+          병원<NumberOfHospital>{HOSPITAL_LIST_DATA.length}</NumberOfHospital>건
         </HospitalText>
         <HospitalList>
-          {[0, 1, 2, 3].map((item) => (
-            <HospitalItem />
+          {HOSPITAL_LIST_DATA.map((item) => (
+            <HospitalItem {...item} />
           ))}
         </HospitalList>
         <InstallButton

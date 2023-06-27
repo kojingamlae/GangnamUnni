@@ -1,9 +1,9 @@
 import Header from "components/common/Header";
 import { ReactNode } from "react";
 import styled from "styled-components";
-import Image from "../components/common/Image";
-import NavigationBar from "../components/common/NavigationBar";
-import { color } from "../styles/color";
+import Image from "../Image";
+import { color } from "styles/color";
+import NavigationBar from "../NavigationBar";
 
 interface PropsType {
   children: ReactNode;

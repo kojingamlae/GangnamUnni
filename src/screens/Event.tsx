@@ -1,7 +1,7 @@
 import EventCategory from "components/event/EventCategory";
 import EventItem from "components/event/EventItem";
 import { CATEGORY_DATA } from "data/category";
-import Layout from "layouts/Layout";
+import Layout from "components/common/Layout";
 import { useState } from "react";
 import styled from "styled-components";
 import { color } from "styles/color";

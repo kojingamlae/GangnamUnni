@@ -3,8 +3,7 @@ import Banner from "components/main/Banner";
 import Categories from "components/main/Categories";
 import SearchInput from "components/main/SearchInput";
 import SurgeryColumn from "components/main/SurgeryColumn";
-
-import Layout from "layouts/Layout";
+import Layout from "components/common/Layout";
 import styled from "styled-components";
 
 const MainScreen = () => {
