@@ -1,7 +1,7 @@
 import Column from "components/common/Flex/Column";
 import { styled } from "styled-components";
 import { color } from "styles/color";
-import StarIcon from "./Icon/Star";
+import StarIcon from "../search-result/Icon/Star";
 
 const HospitalItem = () => {
   return (

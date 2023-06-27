@@ -2,7 +2,7 @@ import Row from "components/common/Flex/Row";
 import Footer from "components/common/Footer";
 import CommunityItem from "components/search-result/CommunityItem";
 import EventItem from "components/search-result/EventItem";
-import HospitalItem from "components/search-result/HospitalItem";
+import HospitalItem from "components/hospital/HospitalItem";
 import MiniLogoIcon from "components/search-result/Icon/MiniLogo";
 import MiniRightArrowIcon from "components/search-result/Icon/MiniRightArrow";
 import Layout from "layouts/Layout";
