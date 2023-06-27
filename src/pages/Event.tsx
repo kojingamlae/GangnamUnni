@@ -24,7 +24,7 @@ const EventScreen = () => {
           ))}
         </EventCategories>
         <EventText>
-          '코성형' 이벤트<NumberOfEvent>715</NumberOfEvent>건
+          '전체' 이벤트<NumberOfEvent>715</NumberOfEvent>건
         </EventText>
         <EventList>
           {[0, 1, 2, 3, 4, 5, 6, 7].map((item) => (
