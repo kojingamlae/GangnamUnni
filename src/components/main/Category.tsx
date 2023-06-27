@@ -1,4 +1,5 @@
 import Image from "components/common/Image";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { color } from "styles/color";
 import flex from "utils/flex";
@@ -9,8 +10,11 @@ interface PropsType {
 }
 
 const Category = ({ name, icon }: PropsType) => {
+  const navigate = useNavigate();
+  name = name.replace("/", "");
+
   return (
-    <StyledCategory>
+    <StyledCategory onClick={() => navigate(`/search/result/${name}`)}>
       <Image
         src={`/assets/category/${icon}.png`}
         width="40px"
