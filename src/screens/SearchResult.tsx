@@ -18,7 +18,7 @@ const SearchResultScreen = () => {
     <Layout>
       <StyledSearchResultScreen>
         <SearchRoot>
-          <Row>
+          <Row alignItems="center">
             <MiniLogoIcon />
             <MiniRightArrowIcon />
             {category}
