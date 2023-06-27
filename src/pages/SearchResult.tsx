@@ -54,6 +54,15 @@ const SearchResultScreen = () => {
             <HospitalItem />
           ))}
         </HospitalList>
+        <InstallButton
+          onClick={() =>
+            window.open(
+              "https://play.google.com/store/apps/details?id=com.gangnam.sister&hl=ko&gl=US"
+            )
+          }
+        >
+          앱 설치하러 가기
+        </InstallButton>
       </StyledSearchResultScreen>
       <Footer />
     </Layout>
@@ -142,6 +151,8 @@ const Bar = styled.div`
 const HospitalList = styled.div`
   ${flex({ flexDirection: "column" })}
   padding: 0px 26px;
+  margin-bottom: 26px;
+  border-bottom: 1px solid #ececec;
 `;
 
 const HospitalText = styled.p`
@@ -156,4 +167,22 @@ const HospitalText = styled.p`
 const NumberOfHospital = styled.span`
   color: ${color.orange};
   margin-left: 6px;
+`;
+
+const InstallButton = styled.button`
+  margin: 0px 26px;
+  display: block;
+  width: calc(100% - 52px);
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  box-sizing: border-box;
+  background-color: rgb(255, 237, 227);
+  color: ${color.orange};
+  padding: 14px 16px;
+  font-size: 16px;
 `;
