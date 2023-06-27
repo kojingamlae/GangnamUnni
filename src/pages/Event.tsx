@@ -1,15 +1,17 @@
 import EventCategory from "components/event/EventCategory";
+import EventItem from "components/event/EventItem";
 import { CATEGORY_DATA } from "data/category";
 import Layout from "layouts/Layout";
 import { useState } from "react";
 import styled from "styled-components";
+import { color } from "styles/color";
 import flex from "utils/flex";
 
 const EventScreen = () => {
   const [selectedCatecory] = useState("all");
 
   return (
-    <Layout>
+    <Layout currentScreenName="event">
       <StyledEventScreen>
         <EventCategories>
           {CATEGORY_DATA.map((item) => (
@@ -21,6 +23,14 @@ const EventScreen = () => {
             />
           ))}
         </EventCategories>
+        <EventText>
+          '코성형' 이벤트<NumberOfEvent>715</NumberOfEvent>건
+        </EventText>
+        <EventList>
+          {[0, 1, 2, 3, 4, 5, 6, 7].map((item) => (
+            <EventItem />
+          ))}
+        </EventList>
       </StyledEventScreen>
     </Layout>
   );
@@ -47,4 +57,22 @@ const EventCategories = styled.div`
     width: 0; /* Chrome/Safari에서 스크롤바 제거 */
     height: 0;
   }
+`;
+
+const EventList = styled.div`
+  ${flex({ flexDirection: "column" })}
+`;
+
+const EventText = styled.p`
+  padding: 16px;
+  color: ${color.black};
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 28px;
+  letter-spacing: 0px;
+`;
+
+const NumberOfEvent = styled.span`
+  color: ${color.orange};
+  margin-left: 6px;
 `;

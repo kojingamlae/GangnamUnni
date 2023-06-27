@@ -1,7 +1,8 @@
 import Column from "components/common/Flex/Column";
 import styled from "styled-components";
 import { color } from "styles/color";
-import StarIcon from "./Icon/Star";
+import flex from "utils/flex";
+import StarIcon from "../search-result/Icon/Star";
 
 const EventItem = () => {
   return (
@@ -54,7 +55,9 @@ const Title = styled.p`
   letter-spacing: 0px;
 `;
 
-const Star = styled.span``;
+const Star = styled.span`
+  ${flex({ alignItems: "center" })}
+`;
 
 const NumberOfStar = styled.span`
   color: ${color.black};
