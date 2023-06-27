@@ -1,5 +1,6 @@
 import Row from "components/common/Flex/Row";
 import Footer from "components/common/Footer";
+import EventItem from "components/search-result/EventItem";
 import MiniLogoIcon from "components/search-result/Icon/MiniLogo";
 import MiniRightArrowIcon from "components/search-result/Icon/MiniRightArrow";
 import Layout from "layouts/Layout";
@@ -18,6 +19,17 @@ const SearchResultScreen = () => {
           </Row>
         </SearchRoot>
         <SearchResultStatus>'눈성형'에 대한 검색결과</SearchResultStatus>
+        <EventBox>
+          <EventText>
+            이벤트 <NumberOfEvent>714</NumberOfEvent>건
+          </EventText>
+          <EventList>
+            <EventItem />
+            <EventItem />
+            <EventItem />
+            <EventItem />
+          </EventList>
+        </EventBox>
       </StyledSearchResultScreen>
       <Footer />
     </Layout>
@@ -54,4 +66,24 @@ const SearchResultStatus = styled.div`
   line-height: 24px;
   letter-spacing: 0px;
   border-bottom: 1px solid #d6d6d6;
+`;
+
+const EventBox = styled.div`
+  padding: 26px 0px;
+`;
+
+const EventList = styled.div``;
+
+const EventText = styled.span`
+  margin: 0px 26px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 24px;
+  letter-spacing: 0px;
+  color: ${color.black};
+`;
+
+const NumberOfEvent = styled.p`
+  color: ${color.orange};
+  margin-left: 6px;
 `;
