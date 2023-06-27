@@ -11,6 +11,8 @@ import InjectionIcon from "components/community/Icon/Injection";
 import DocterIcon from "components/community/Icon/Docter";
 import PeopleIcon from "components/community/Icon/People";
 import { useState } from "react";
+import flex from "utils/flex";
+import CommunityItem from "components/community/CommunityItem";
 
 const CommunityScreen = () => {
   const [selectedCategory, setSelectedCategory] = useState("베스트");
@@ -57,6 +59,11 @@ const CommunityScreen = () => {
             onClick={() => setSelectedCategory("자유수다")}
           />
         </CommunityCategories>
+        <CommunityList>
+          {[0, 1, 2, 3].map((item) => (
+            <CommunityItem />
+          ))}
+        </CommunityList>
       </StyledCommunituScreen>
     </Layout>
   );
@@ -89,4 +96,9 @@ const CommunityCategories = styled.div`
   gap: 8px;
   overflow-x: scroll;
   user-select: none;
+  border-bottom: 1px solid #d6d6d6;
+`;
+
+const CommunityList = styled.div`
+  ${flex({ flexDirection: "column" })}
 `;
