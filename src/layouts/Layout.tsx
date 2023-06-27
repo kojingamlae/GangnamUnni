@@ -7,9 +7,10 @@ import { color } from "../styles/color";
 
 interface PropsType {
   children: ReactNode;
+  currentScreenName?: string;
 }
 
-const Layout = ({ children }: PropsType) => {
+const Layout = ({ children, currentScreenName = "" }: PropsType) => {
   return (
     <StyledLayout>
       <AsideBox>
@@ -25,7 +26,7 @@ const Layout = ({ children }: PropsType) => {
       <FrameMainBox>
         <Header />
         {children}
-        <NavigationBar />
+        <NavigationBar currentScreenName={currentScreenName} />
       </FrameMainBox>
     </StyledLayout>
   );

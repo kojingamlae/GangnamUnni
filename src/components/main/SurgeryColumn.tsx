@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { color } from "styles/color";
 import flex from "utils/flex";
 import RightArrowIcon from "./Icon/RightArrow";
-import SurgeryItem from "./items/SurgeryItem";
+import SurgeryItem from "./SurgeryItem";
 
 const SurgeryColumn = () => {
   return (

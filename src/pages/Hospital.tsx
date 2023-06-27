@@ -5,7 +5,7 @@ import flex from "utils/flex";
 
 const HospitalScreen = () => {
   return (
-    <Layout>
+    <Layout currentScreenName="hospital">
       <StyledHospitalScreen>
         <HospitalHeader>
           <NumberOfHospital>병원 목록 (907)</NumberOfHospital>

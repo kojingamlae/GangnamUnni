@@ -1,6 +1,6 @@
 import { IconPropsType } from "types/Icon";
 
-const LocationIcon = ({ fill }: IconPropsType) => {
+const HospitalIcon = ({ fill }: IconPropsType) => {
   return (
     <svg
       width="24"
@@ -32,4 +32,4 @@ const LocationIcon = ({ fill }: IconPropsType) => {
   );
 };
 
-export default LocationIcon;
+export default HospitalIcon;

@@ -9,7 +9,7 @@ import styled from "styled-components";
 
 const MainScreen = () => {
   return (
-    <Layout>
+    <Layout currentScreenName="home">
       <StyledMainScreen>
         <SearchInput />
         <Banner />
