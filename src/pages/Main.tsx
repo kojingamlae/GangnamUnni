@@ -4,12 +4,12 @@ import Categories from "components/main/Categories";
 import SearchInput from "components/main/SearchInput";
 import SurgeryColumn from "components/main/SurgeryColumn";
 
-import MainLayout from "layouts/MainLayout";
+import Layout from "layouts/Layout";
 import styled from "styled-components";
 
 const MainScreen = () => {
   return (
-    <MainLayout>
+    <Layout>
       <StyledMainScreen>
         <SearchInput />
         <Banner />
@@ -17,7 +17,7 @@ const MainScreen = () => {
         <SurgeryColumn />
       </StyledMainScreen>
       <Footer />
-    </MainLayout>
+    </Layout>
   );
 };
 

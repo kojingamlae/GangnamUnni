@@ -1,8 +1,14 @@
+import { Route, Routes } from "react-router-dom";
 import MainScreen from "pages/Main";
-import React from "react";
+import SearchResultScreen from "pages/SearchResult";
 
 const App = () => {
-  return <MainScreen />;
+  return (
+    <Routes>
+      <Route path="/" element={<MainScreen />} />
+      <Route path="/search" element={<SearchResultScreen />} />
+    </Routes>
+  );
 };
 
 export default App;
