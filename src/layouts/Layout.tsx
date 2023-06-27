@@ -9,9 +9,9 @@ interface PropsType {
   children: ReactNode;
 }
 
-const MainLayout = ({ children }: PropsType) => {
+const Layout = ({ children }: PropsType) => {
   return (
-    <StyledMainLayout>
+    <StyledLayout>
       <AsideBox>
         <BrandFilmBox>
           <Image
@@ -27,13 +27,13 @@ const MainLayout = ({ children }: PropsType) => {
         {children}
         <NavigationBar />
       </FrameMainBox>
-    </StyledMainLayout>
+    </StyledLayout>
   );
 };
 
-export default MainLayout;
+export default Layout;
 
-const StyledMainLayout = styled.section`
+const StyledLayout = styled.section`
   display: flex;
   justify-content: center;
   background-color: #f5f5f5;
