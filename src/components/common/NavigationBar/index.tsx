@@ -1,21 +1,30 @@
 import styled from "styled-components";
 import HomeIcon from "./Icon/Home";
 import NavigationLink from "./NavigationLink";
-import LocationIcon from "./Icon/Location";
+import HospitalIcon from "./Icon/Hospital";
 import { color } from "styles/color";
 import CommunityIcon from "./Icon/Community";
 import ColumnIcon from "./Icon/Column";
 import { useState } from "react";
 import EventIcon from "./Icon/Event";
 import flex from "utils/flex";
+import { useNavigate } from "react-router-dom";
 
-const NavigationBar = () => {
-  const [selectedLink, setSelectedLink] = useState("home");
+interface PropsType {
+  currentScreenName: string;
+}
+
+const NavigationBar = ({ currentScreenName }: PropsType) => {
+  const navigate = useNavigate();
+  const [selectedLink, setSelectedLink] = useState(currentScreenName);
 
   return (
     <StyledNavigationBar>
       <NavigationLink
-        onClick={() => setSelectedLink("home")}
+        onClick={() => {
+          setSelectedLink("home");
+          navigate("/");
+        }}
         icon={
           <HomeIcon fill={selectedLink === "home" ? color.orange : "#4C4C4C"} />
         }
@@ -23,17 +32,23 @@ const NavigationBar = () => {
         isSelected={selectedLink === "home"}
       />
       <NavigationLink
-        onClick={() => setSelectedLink("location")}
+        onClick={() => {
+          setSelectedLink("hospital");
+          navigate("/hospital");
+        }}
         icon={
-          <LocationIcon
-            fill={selectedLink === "location" ? color.orange : "#4C4C4C"}
+          <HospitalIcon
+            fill={selectedLink === "hospital" ? color.orange : "#4C4C4C"}
           />
         }
         text="병원"
-        isSelected={selectedLink === "location"}
+        isSelected={selectedLink === "hospital"}
       />
       <NavigationLink
-        onClick={() => setSelectedLink("event")}
+        onClick={() => {
+          setSelectedLink("event");
+          navigate("/event");
+        }}
         icon={
           <EventIcon
             fill={selectedLink === "event" ? color.orange : "#4C4C4C"}
@@ -43,7 +58,10 @@ const NavigationBar = () => {
         isSelected={selectedLink === "event"}
       />
       <NavigationLink
-        onClick={() => setSelectedLink("community")}
+        onClick={() => {
+          setSelectedLink("community");
+          navigate("/community");
+        }}
         icon={
           <CommunityIcon
             fill={selectedLink === "community" ? color.orange : "#4C4C4C"}
