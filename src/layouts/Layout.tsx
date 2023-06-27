@@ -10,7 +10,7 @@ interface PropsType {
   currentScreenName?: string;
 }
 
-const Layout = ({ children, currentScreenName = "home" }: PropsType) => {
+const Layout = ({ children, currentScreenName = "" }: PropsType) => {
   return (
     <StyledLayout>
       <AsideBox>
