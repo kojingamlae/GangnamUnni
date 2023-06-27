@@ -2,6 +2,7 @@ import Row from "components/common/Flex/Row";
 import Footer from "components/common/Footer";
 import CommunityItem from "components/search-result/CommunityItem";
 import EventItem from "components/search-result/EventItem";
+import HospitalItem from "components/search-result/HospitalItem";
 import MiniLogoIcon from "components/search-result/Icon/MiniLogo";
 import MiniRightArrowIcon from "components/search-result/Icon/MiniRightArrow";
 import Layout from "layouts/Layout";
@@ -45,6 +46,14 @@ const SearchResultScreen = () => {
             </>
           ))}
         </CommunityList>
+        <HospitalText>
+          병원<NumberOfHospital>714</NumberOfHospital>건
+        </HospitalText>
+        <HospitalList>
+          {[0, 1, 2, 3].map((item) => (
+            <HospitalItem />
+          ))}
+        </HospitalList>
       </StyledSearchResultScreen>
       <Footer />
     </Layout>
@@ -121,10 +130,30 @@ const NumberOfCommunity = styled.span`
 
 const CommunityList = styled.div`
   ${flex({ flexDirection: "column" })}
+  margin-bottom: 26px;
 `;
 
 const Bar = styled.div`
   width: 100%;
   height: 10px;
   background-color: #f5f5f5;
+`;
+
+const HospitalList = styled.div`
+  ${flex({ flexDirection: "column" })}
+  padding: 0px 26px;
+`;
+
+const HospitalText = styled.p`
+  margin: 0px 26px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 24px;
+  letter-spacing: 0px;
+  color: ${color.black};
+`;
+
+const NumberOfHospital = styled.span`
+  color: ${color.orange};
+  margin-left: 6px;
 `;
