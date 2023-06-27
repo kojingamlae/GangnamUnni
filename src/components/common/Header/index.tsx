@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <StyledHeader>
       <div />
-      <HeaderLogoWrapper>
+      <HeaderLogoWrapper onClick={() => (window.location.href = "/")}>
         <Image
           src="/assets/logo.svg"
           alt="logo"
