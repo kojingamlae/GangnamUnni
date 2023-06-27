@@ -1,6 +1,6 @@
 import Row from "components/common/Flex/Row";
 import Footer from "components/common/Footer";
-import CommunityItem from "components/search-result/CommunityItem";
+import CommunityItem from "components/community/CommunityItem";
 import EventItem from "components/event/EventItem";
 import HospitalItem from "components/hospital/HospitalItem";
 import MiniLogoIcon from "components/search-result/Icon/MiniLogo";
@@ -18,7 +18,7 @@ const SearchResultScreen = () => {
     <Layout>
       <StyledSearchResultScreen>
         <SearchRoot>
-          <Row>
+          <Row alignItems="center">
             <MiniLogoIcon />
             <MiniRightArrowIcon />
             {category}

@@ -8,7 +8,7 @@ const ReactionBar = () => {
     <StyledReactionBar>
       <Button>
         <LikeIcon />
-        좋아요
+        좋아요 0
       </Button>
       <Button>
         <CommentIcon />

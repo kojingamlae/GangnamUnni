@@ -2,7 +2,7 @@ import Row from "components/common/Flex/Row";
 import styled from "styled-components";
 import { color } from "styles/color";
 import flex from "utils/flex";
-import ReactionBar from "./ReactionBar";
+import ReactionBar from "../search-result/ReactionBar";
 
 const CommunityItem = () => {
   return (
