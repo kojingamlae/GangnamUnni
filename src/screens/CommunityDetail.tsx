@@ -9,18 +9,29 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { color } from "styles/color";
 import flex from "utils/flex";
-import { doc, getDoc, collection } from "firebase/firestore";
+import { doc, getDoc, collection, updateDoc } from "firebase/firestore";
 import { db } from "db";
 import { PostType } from "./Community";
+
+const updateComments = async (id: string, comments: string[]) => {
+  const commentsRef = doc(db, "post", id);
+  await updateDoc(commentsRef, { comments });
+};
 
 const CommunityDetailScreen = () => {
   const { id } = useParams();
 
-  // const data = COMMUNITY_DETAIL_DATA[Number(id)];
   const [postComment, setPostComment] = useState("");
   const [postData, setPostData] = useState<PostType>();
 
   const postCollectionRef = collection(db, "post");
+
+  const sendComment = () => {
+    postData?.comments.push(postComment);
+    if (postData?.comments) updateComments(String(id), postData?.comments);
+    console.log(postData?.comments);
+    setPostComment("");
+  };
 
   useEffect(() => {
     const getPost = async () => {
@@ -39,7 +50,6 @@ const CommunityDetailScreen = () => {
           likeStatus: data.likeStatus,
         };
         setPostData(post);
-        console.log(postData);
       }
     };
     getPost();
@@ -78,13 +88,12 @@ const CommunityDetailScreen = () => {
               setPostComment(e.target.value)
             }
           />
-          <Button>등록</Button>
+          <Button onClick={sendComment}>등록</Button>
         </InputSection>
         <CommentList>
-          <Comment />
-          <Comment />
-          <Comment />
-          <Comment />
+          {postData?.comments.map((item) => (
+            <Comment content={item} />
+          ))}
         </CommentList>
       </StyledCommunityScreen>
     </Layout>

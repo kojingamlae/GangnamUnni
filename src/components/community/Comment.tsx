@@ -3,22 +3,22 @@ import { styled } from "styled-components";
 import { color } from "styles/color";
 import flex from "utils/flex";
 
-const Comment = () => {
+interface CommentType {
+  content: string;
+}
+
+const Comment = ({ content }: CommentType) => {
   return (
     <StyledComment>
       <Row alignItems="center">
         <Profile src="/assets/profile/profile.png" />
         <Name>부소마학생</Name>
         <Dot />
-        <Level>Lv.99</Level>
+        <Level>Lv.1</Level>
         <Dot />
         <CreateTime>5일 전</CreateTime>
       </Row>
-      <Content>
-        추출하느니 지흡하는게 낫다고 보는데..ㅠㅠ 나도 안해본게 없어서 결국엔
-        전신지흡으로 마무리..이제야 만족해 ㅋㅋㅋ 레아트 지흡으로 전후차이도
-        좋고 사후관리 잘해줘서 나는 다레아트에서 해결했거든 상담한번가봐
-      </Content>
+      <Content>{content}</Content>
     </StyledComment>
   );
 };
