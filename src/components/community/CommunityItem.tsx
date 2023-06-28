@@ -1,11 +1,11 @@
 import Row from "components/common/Flex/Row";
-import { CommunityItemDataType } from "data/list/community";
+import { PostType } from "screens/Community";
 import styled from "styled-components";
 import { color } from "styles/color";
 import flex from "utils/flex";
 import ReactionBar from "../search-result/ReactionBar";
 
-const CommunityItem = ({ ...props }: CommunityItemDataType) => {
+const CommunityItem = (props: PostType) => {
   return (
     <>
       <StyledCommunityItem>
@@ -21,7 +21,7 @@ const CommunityItem = ({ ...props }: CommunityItemDataType) => {
           <Content>{props.content}</Content>
         </ContentBox>
       </StyledCommunityItem>
-      <ReactionBar />
+      <ReactionBar like={props.like} comments={props.comments} id={props.id} />
     </>
   );
 };

@@ -13,9 +13,36 @@ import flex from "utils/flex";
 import { HOSPITAL_LIST_DATA } from "data/list/hospital";
 import { EVENT_LIST_DATA } from "data/list/event";
 import { COMMUNITY_LIST_DATA } from "data/list/community";
+import { useEffect, useState } from "react";
+import { PostType } from "./Community";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "db";
 
 const SearchResultScreen = () => {
   const { category } = useParams();
+  const [postData, setPostData] = useState<PostType[]>();
+
+  const postCollectionRef = collection(db, "post");
+
+  useEffect(() => {
+    const getPost = async () => {
+      const querySnapshot = await getDocs(postCollectionRef);
+      const postData = querySnapshot.docs.map((doc) => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          like: data.like,
+          comments: data.comments,
+          content: data.content,
+          createTime: data.createTime,
+          level: data.level,
+          name: data.name,
+        };
+      });
+      setPostData(postData);
+    };
+    getPost();
+  }, []);
 
   return (
     <Layout>
@@ -42,7 +69,7 @@ const SearchResultScreen = () => {
           '{category}' 커뮤니티<NumberOfCommunity>714</NumberOfCommunity>건
         </CommunityText>
         <CommunityList>
-          {COMMUNITY_LIST_DATA.map((item) => (
+          {postData?.map((item) => (
             <>
               <CommunityItem {...item} />
               <Bar />

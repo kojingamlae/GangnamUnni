@@ -1,23 +1,38 @@
-import { useState } from "react";
+import { db } from "db";
+import { doc, updateDoc } from "@firebase/firestore";
 import styled from "styled-components";
 import CommentIcon from "./Icon/Comment";
 import LikeIcon from "./Icon/Like";
 import ViewIcon from "./Icon/View";
+import { useState } from "react";
 
-const ReactionBar = () => {
-  const [like, setLike] = useState(0);
+interface ReactionType {
+  id: string;
+  like: number;
+  comments: string[];
+}
 
-  const toggleLike = () => setLike((prev) => (!prev ? prev + 1 : prev - 1));
+const updateLike = async (id: string, like: number) => {
+  const likeRef = doc(db, "post", id);
+  await updateDoc(likeRef, { like });
+};
 
+const ReactionBar = ({ like, comments, id }: ReactionType) => {
+  const [likeCount, setLikeCount] = useState(like);
+
+  const onClick = () => {
+    updateLike(id, like + 1);
+    setLikeCount(like + 1);
+  };
   return (
     <StyledReactionBar>
-      <Button onClick={toggleLike}>
+      <Button onClick={onClick}>
         <LikeIcon />
-        좋아요 {like}
+        좋아요 {likeCount}
       </Button>
       <Button>
         <CommentIcon />
-        답변 0
+        답변 {comments.length}
       </Button>
       <Button>
         <ViewIcon />
