@@ -66,7 +66,8 @@ const SearchResultScreen = () => {
           </EventList>
         </EventBox>
         <CommunityText>
-          '{category}' 커뮤니티<NumberOfCommunity>714</NumberOfCommunity>건
+          '{category}' 커뮤니티
+          <NumberOfCommunity>{postData?.length}</NumberOfCommunity>건
         </CommunityText>
         <CommunityList>
           {postData?.map((item) => (

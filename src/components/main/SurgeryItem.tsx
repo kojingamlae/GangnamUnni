@@ -1,10 +1,12 @@
 import { ColumnListType } from "data/list/column";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { color } from "styles/color";
 
 const SurgeryItem = (props: ColumnListType) => {
+  const navigate = useNavigate();
   return (
-    <StyledSurgeryItem>
+    <StyledSurgeryItem onClick={() => navigate("/column")}>
       <SurgeryImage src={props.imgSrc} alt="surgery-img" />
       <Tags>{props.tag}</Tags>
       <Desc>{props.title}</Desc>
