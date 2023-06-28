@@ -5,14 +5,44 @@ import EventItem from "components/event/EventItem";
 import HospitalItem from "components/hospital/HospitalItem";
 import MiniLogoIcon from "components/search-result/Icon/MiniLogo";
 import MiniRightArrowIcon from "components/search-result/Icon/MiniRightArrow";
-import Layout from "layouts/Layout";
+import Layout from "components/common/Layout";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { color } from "styles/color";
 import flex from "utils/flex";
+import { HOSPITAL_LIST_DATA } from "data/list/hospital";
+import { EVENT_LIST_DATA } from "data/list/event";
+import { COMMUNITY_LIST_DATA } from "data/list/community";
+import { useEffect, useState } from "react";
+import { PostType } from "./Community";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "db";
 
 const SearchResultScreen = () => {
   const { category } = useParams();
+  const [postData, setPostData] = useState<PostType[]>();
+
+  const postCollectionRef = collection(db, "post");
+
+  useEffect(() => {
+    const getPost = async () => {
+      const querySnapshot = await getDocs(postCollectionRef);
+      const postData = querySnapshot.docs.map((doc) => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          like: data.like,
+          comments: data.comments,
+          content: data.content,
+          createTime: data.createTime,
+          level: data.level,
+          name: data.name,
+        };
+      });
+      setPostData(postData);
+    };
+    getPost();
+  }, []);
 
   return (
     <Layout>
@@ -27,31 +57,32 @@ const SearchResultScreen = () => {
         <SearchResultStatus>'{category}'에 대한 검색결과</SearchResultStatus>
         <EventBox>
           <EventText>
-            이벤트<NumberOfEvent>714</NumberOfEvent>건
+            이벤트<NumberOfEvent>2</NumberOfEvent>건
           </EventText>
           <EventList>
-            {[0, 1, 2, 3].map((item) => (
-              <EventItem key={item} />
+            {EVENT_LIST_DATA.slice(0, 2).map((item) => (
+              <EventItem {...item} />
             ))}
           </EventList>
         </EventBox>
         <CommunityText>
-          '{category}' 커뮤니티<NumberOfCommunity>714</NumberOfCommunity>건
+          '{category}' 커뮤니티
+          <NumberOfCommunity>{postData?.length}</NumberOfCommunity>건
         </CommunityText>
         <CommunityList>
-          {[0, 1, 2, 3].map((item) => (
+          {postData?.map((item) => (
             <>
-              <CommunityItem key={item} />
+              <CommunityItem {...item} />
               <Bar />
             </>
           ))}
         </CommunityList>
         <HospitalText>
-          병원<NumberOfHospital>714</NumberOfHospital>건
+          병원<NumberOfHospital>{HOSPITAL_LIST_DATA.length}</NumberOfHospital>건
         </HospitalText>
         <HospitalList>
-          {[0, 1, 2, 3].map((item) => (
-            <HospitalItem />
+          {HOSPITAL_LIST_DATA.map((item) => (
+            <HospitalItem {...item} />
           ))}
         </HospitalList>
         <InstallButton

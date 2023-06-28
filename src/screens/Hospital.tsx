@@ -1,19 +1,22 @@
 import HospitalItem from "components/hospital/HospitalItem";
-import Layout from "layouts/Layout";
+import Layout from "components/common/Layout";
 import styled from "styled-components";
 import flex from "utils/flex";
+import { HOSPITAL_LIST_DATA } from "data/list/hospital";
 
 const HospitalScreen = () => {
   return (
     <Layout currentScreenName="hospital">
       <StyledHospitalScreen>
         <HospitalHeader>
-          <NumberOfHospital>병원 목록 (907)</NumberOfHospital>
+          <NumberOfHospital>
+            병원 목록 ({HOSPITAL_LIST_DATA.length})
+          </NumberOfHospital>
           <Filter>추천순</Filter>
         </HospitalHeader>
         <HospitalList>
-          {[0, 1, 2, 3].map((item) => (
-            <HospitalItem />
+          {HOSPITAL_LIST_DATA.map((item) => (
+            <HospitalItem {...item} />
           ))}
         </HospitalList>
       </StyledHospitalScreen>

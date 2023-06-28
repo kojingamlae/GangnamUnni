@@ -1,35 +1,32 @@
 import Row from "components/common/Flex/Row";
-import { PostType } from "screens/Community";
-import styled from "styled-components";
+import { styled } from "styled-components";
 import { color } from "styles/color";
 import flex from "utils/flex";
-import ReactionBar from "../search-result/ReactionBar";
 
-const CommunityItem = (props: PostType) => {
+interface CommentType {
+  content: string;
+}
+
+const Comment = ({ content }: CommentType) => {
   return (
-    <>
-      <StyledCommunityItem>
-        <Row alignItems="center">
-          <Profile src="/assets/profile/profile.png" />
-          <Name>{props.name}</Name>
-          <Dot />
-          <Level>Lv.{props.level}</Level>
-          <Dot />
-          <CreateTime>{props.createTime}일 전</CreateTime>
-        </Row>
-        <ContentBox>
-          <Content>{props.content}</Content>
-        </ContentBox>
-      </StyledCommunityItem>
-      <ReactionBar like={props.like} comments={props.comments} id={props.id} />
-    </>
+    <StyledComment>
+      <Row alignItems="center">
+        <Profile src="/assets/profile/profile.png" />
+        <Name>부소마학생</Name>
+        <Dot />
+        <Level>Lv.1</Level>
+        <Dot />
+        <CreateTime>방금 전</CreateTime>
+      </Row>
+      <Content>{content}</Content>
+    </StyledComment>
   );
 };
 
-export default CommunityItem;
+export default Comment;
 
-const StyledCommunityItem = styled.div`
-  padding: 26px;
+const StyledComment = styled.div`
+  padding: 16px 26px;
 `;
 
 const Profile = styled.img`
@@ -84,15 +81,13 @@ const CreateTime = styled.span`
   white-space: nowrap;
 `;
 
-const ContentBox = styled.div`
-  font-size: 16px;
-  font-weight: normal;
-  line-height: 24px;
-  letter-spacing: 0px;
-  color: ${color.black};
-`;
-
 const Content = styled.p`
-  margin-top: 12px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding-left: 32px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  letter-spacing: 0px;
   white-space: pre-line;
 `;

@@ -71,7 +71,10 @@ const NavigationBar = ({ currentScreenName }: PropsType) => {
         isSelected={selectedLink === "community"}
       />
       <NavigationLink
-        onClick={() => setSelectedLink("column")}
+        onClick={() => {
+          setSelectedLink("column");
+          navigate("/column");
+        }}
         icon={
           <ColumnIcon
             fill={selectedLink === "column" ? color.orange : "#4C4C4C"}

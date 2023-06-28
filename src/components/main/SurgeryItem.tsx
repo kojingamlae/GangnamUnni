@@ -1,14 +1,15 @@
+import { ColumnListType } from "data/list/column";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { color } from "styles/color";
 
-const SurgeryItem = () => {
+const SurgeryItem = (props: ColumnListType) => {
+  const navigate = useNavigate();
   return (
-    <StyledSurgeryItem>
-      <SurgeryImage src="/assets/surgery/surgery-img.png" alt="surgery-img" />
-      <Tags>#필러 #쥬비덤 #뉴라미스</Tags>
-      <Desc>
-        [필러] 쥬비덤? 뉴라미스? 필러 종류 및 필러 유지기간, 시술 주기
-      </Desc>
+    <StyledSurgeryItem onClick={() => navigate("/column")}>
+      <SurgeryImage src={props.imgSrc} alt="surgery-img" />
+      <Tags>{props.tag}</Tags>
+      <Desc>{props.title}</Desc>
     </StyledSurgeryItem>
   );
 };

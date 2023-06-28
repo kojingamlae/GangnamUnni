@@ -1,22 +1,56 @@
+import { db } from "db";
+import { doc, updateDoc } from "@firebase/firestore";
 import styled from "styled-components";
 import CommentIcon from "./Icon/Comment";
 import LikeIcon from "./Icon/Like";
 import ViewIcon from "./Icon/View";
+import { useEffect, useState } from "react";
+import FillLikeIcon from "./Icon/FillLike";
+import { useNavigate } from "react-router-dom";
 
-const ReactionBar = () => {
+interface ReactionType {
+  id: string;
+  like: number;
+  comments: string[];
+}
+
+const updateLike = async (id: string, like: number) => {
+  const likeRef = doc(db, "post", id);
+  await updateDoc(likeRef, { like });
+};
+
+const ReactionBar = ({ like, comments, id }: ReactionType) => {
+  const navigate = useNavigate();
+  const [likeCount, setLikeCount] = useState(like);
+  const [postLikeStatus, setLikeStatus] = useState(false);
+
+  useEffect(() => {
+    setLikeCount(like);
+  }, [like]);
+
+  const onClick = () => {
+    if (postLikeStatus) {
+      updateLike(id, like - 1);
+      setLikeCount((prev) => prev - 1);
+    } else {
+      updateLike(id, like + 1);
+      setLikeCount((prev) => prev + 1);
+    }
+    setLikeStatus((prev) => !prev);
+  };
   return (
     <StyledReactionBar>
-      <Button>
-        <LikeIcon />
-        좋아요 0
+      <Button onClick={onClick}>
+        {postLikeStatus ? <FillLikeIcon /> : <LikeIcon />}
+        좋아요 {likeCount}
       </Button>
-      <Button>
+      <Button onClick={() => navigate(`/community/${id}`)}>
         <CommentIcon />
-        답변 51
+        답변 {comments.length}
       </Button>
       <Button>
         <ViewIcon />
-        조회 17
+        조회 0
       </Button>
     </StyledReactionBar>
   );
@@ -31,6 +65,7 @@ const StyledReactionBar = styled.div`
   padding: 0px 16px;
   justify-content: center;
   border-top: 1px solid #ececec;
+  border-bottom: 1px solid #ececec;
 `;
 
 const Button = styled.button`

@@ -1,27 +1,28 @@
 import Column from "components/common/Flex/Column";
+import { HospitalItemDataType } from "data/list/hospital";
 import { styled } from "styled-components";
 import { color } from "styles/color";
 import StarIcon from "../search-result/Icon/Star";
 
-const HospitalItem = () => {
+const HospitalItem = ({ ...props }: HospitalItemDataType) => {
   return (
     <StyledHospitalItem>
-      <HospitalImage src="/assets/hospital/hospital.png" />
+      <HospitalImage src={props.imgUrl} />
       <Column>
-        <Title>나나성형외과의원</Title>
+        <Title>{props.title}</Title>
         <Info>
           <span>
             <StarIcon />
-            9.6 (평가 <Stress>15,017</Stress>개)
-          </span>{" "}
-          <Bar>|</Bar>
-          <span>
-            {" "}
-            이벤트 <Stress>83</Stress>개
+            {props.starOfnumber} (평가{" "}
+            <Stress>{props.evaluationOfnumber}</Stress>개)
           </span>
           <Bar>|</Bar>
           <span>
-            시술후기 <Stress>28,571</Stress>개
+            이벤트 <Stress>{props.eventOfnumber}</Stress>개
+          </span>
+          <Bar>|</Bar>
+          <span>
+            시술후기 <Stress>{props.reviewOfnumber}</Stress>개
           </span>
         </Info>
       </Column>

@@ -1,11 +1,12 @@
 import EventCategory from "components/event/EventCategory";
 import EventItem from "components/event/EventItem";
 import { CATEGORY_DATA } from "data/category";
-import Layout from "layouts/Layout";
+import Layout from "components/common/Layout";
 import { useState } from "react";
 import styled from "styled-components";
 import { color } from "styles/color";
 import flex from "utils/flex";
+import { EVENT_LIST_DATA } from "data/list/event";
 
 const EventScreen = () => {
   const [selectedCatecory] = useState("all");
@@ -24,11 +25,11 @@ const EventScreen = () => {
           ))}
         </EventCategories>
         <EventText>
-          '전체' 이벤트<NumberOfEvent>715</NumberOfEvent>건
+          '전체' 이벤트<NumberOfEvent>{EVENT_LIST_DATA.length}</NumberOfEvent>건
         </EventText>
         <EventList>
-          {[0, 1, 2, 3, 4, 5, 6, 7].map((item) => (
-            <EventItem />
+          {EVENT_LIST_DATA.map((item) => (
+            <EventItem {...item} />
           ))}
         </EventList>
       </StyledEventScreen>

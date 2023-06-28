@@ -1,22 +1,23 @@
 import Column from "components/common/Flex/Column";
+import { EventItemDataType } from "data/list/event";
 import styled from "styled-components";
 import { color } from "styles/color";
 import flex from "utils/flex";
 import StarIcon from "../search-result/Icon/Star";
 
-const EventItem = () => {
+const EventItem = ({ ...props }: EventItemDataType) => {
   return (
     <StyledEventItem>
-      <EventImage src="/assets/event/eye.png" />
+      <EventImage src={props.imgUrl} />
       <Column>
-        <Location>강남역 . 썅역</Location>
-        <Title>옐로우 토탈 눈성형</Title>
+        <Location>{props.location}</Location>
+        <Title>{props.title}</Title>
         <Star>
           <StarIcon />
-          <NumberOfStar>9.8</NumberOfStar>
-          <NumberOfHuman>(1713)</NumberOfHuman>
+          <NumberOfStar>{props.startOfnumber}</NumberOfStar>
+          <NumberOfHuman>({props.numberOfhuman})</NumberOfHuman>
         </Star>
-        <Price>52.9만원</Price>
+        <Price>{props.price}만원</Price>
       </Column>
     </StyledEventItem>
   );

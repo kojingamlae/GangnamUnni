@@ -1,3 +1,5 @@
+import { COLUMN_LIST } from "data/list/column";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { color } from "styles/color";
 import flex from "utils/flex";
@@ -5,19 +7,19 @@ import RightArrowIcon from "./Icon/RightArrow";
 import SurgeryItem from "./SurgeryItem";
 
 const SurgeryColumn = () => {
+  const navigate = useNavigate();
   return (
     <StyledSurgeryColumn>
       <ColumnHeader>
         <Title>시술칼럼</Title>
-        <ViewAll>
+        <ViewAll onClick={() => navigate("/column")}>
           전체보기 <RightArrowIcon />
         </ViewAll>
       </ColumnHeader>
       <ColumnList>
-        <SurgeryItem />
-        <SurgeryItem />
-        <SurgeryItem />
-        <SurgeryItem />
+        {COLUMN_LIST.map((item) => (
+          <SurgeryItem {...item} />
+        ))}
       </ColumnList>
     </StyledSurgeryColumn>
   );

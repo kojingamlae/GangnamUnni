@@ -1,4 +1,4 @@
-import Layout from "layouts/Layout";
+import Layout from "components/common/Layout";
 import styled from "styled-components";
 import Row from "components/common/Flex/Row";
 import { color } from "styles/color";
@@ -10,12 +10,47 @@ import HealIcon from "components/community/Icon/Heal";
 import InjectionIcon from "components/community/Icon/Injection";
 import DocterIcon from "components/community/Icon/Docter";
 import PeopleIcon from "components/community/Icon/People";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import flex from "utils/flex";
 import CommunityItem from "components/community/CommunityItem";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "db";
+
+export interface PostType {
+  id: string;
+  name: string;
+  level: number;
+  createTime: number;
+  content: string;
+  like: number;
+  comments: string[];
+}
 
 const CommunityScreen = () => {
   const [selectedCategory, setSelectedCategory] = useState("베스트");
+  const [postData, setPostData] = useState<PostType[]>();
+
+  const postCollectionRef = collection(db, "post");
+
+  useEffect(() => {
+    const getPost = async () => {
+      const querySnapshot = await getDocs(postCollectionRef);
+      const postData = querySnapshot.docs.map((doc) => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          like: data.like,
+          comments: data.comments,
+          content: data.content,
+          createTime: data.createTime,
+          level: data.level,
+          name: data.name,
+        };
+      });
+      setPostData(postData);
+    };
+    getPost();
+  }, []);
 
   return (
     <Layout currentScreenName="community">
@@ -60,8 +95,8 @@ const CommunityScreen = () => {
           />
         </CommunityCategories>
         <CommunityList>
-          {[0, 1, 2, 3].map((item) => (
-            <CommunityItem />
+          {postData?.map((item) => (
+            <CommunityItem {...item} />
           ))}
         </CommunityList>
       </StyledCommunituScreen>
