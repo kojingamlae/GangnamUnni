@@ -4,15 +4,47 @@ import Comment from "components/community/Comment";
 import MiniLogoIcon from "components/search-result/Icon/MiniLogo";
 import MiniRightArrowIcon from "components/search-result/Icon/MiniRightArrow";
 import ReactionBar from "components/search-result/ReactionBar";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { color } from "styles/color";
 import flex from "utils/flex";
+import { doc, getDoc, collection } from "firebase/firestore";
+import { db } from "db";
+import { PostType } from "./Community";
 
 const CommunityDetailScreen = () => {
   const { id } = useParams();
 
-  console.log(id);
+  // const data = COMMUNITY_DETAIL_DATA[Number(id)];
+  const [postComment, setPostComment] = useState("");
+  const [postData, setPostData] = useState<PostType>();
+
+  const postCollectionRef = collection(db, "post");
+
+  useEffect(() => {
+    const getPost = async () => {
+      const querySnapshot = await getDoc(doc(postCollectionRef, id));
+      const data = querySnapshot.data();
+
+      if (data) {
+        const post: PostType = {
+          id: querySnapshot.id,
+          name: data.name,
+          level: data.level,
+          createTime: data.createTime,
+          content: data.content,
+          like: data.like,
+          comments: data.comments,
+          likeStatus: data.likeStatus,
+        };
+        setPostData(post);
+        console.log(postData);
+      }
+    };
+    getPost();
+  }, []);
+
   return (
     <Layout>
       <StyledCommunityScreen>
@@ -26,21 +58,26 @@ const CommunityDetailScreen = () => {
         <CommunityPost>
           <Row alignItems="center">
             <Profile src="/assets/profile/profile.png" />
-            <Name>김석진</Name>
+            <Name>{postData?.name}</Name>
             <Dot />
-            <Level>Lv.99</Level>
+            <Level>Lv.{postData?.level}</Level>
             <Dot />
-            <CreateTime>5일 전</CreateTime>
+            <CreateTime>{postData?.createTime}일 전</CreateTime>
           </Row>
-          <Content>
-            팔뚝살 빼고싶어ㅠㅠㅠ 점점 짧아지는 상의때문에 복부 지방 추출했는데
-            이젠 부유방이랑 팔뚝이 신경쓰고 난리ㅠㅠㅠㅠㅠ 지흡이나 주사 맞은
-            분들 중 추천하는데 있남유..?ㅠ
-          </Content>
+          <Content>{postData?.content}</Content>
         </CommunityPost>
-        <ReactionBar comments={[]} like={0} id="0" />
+        <ReactionBar
+          comments={postData?.comments ?? []}
+          like={postData?.like ?? 0}
+          id={postData?.id ?? "0"}
+        />
         <InputSection>
-          <Input placeholder="댓글을 입력해주세요." />
+          <Input
+            placeholder="댓글을 입력해주세요."
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setPostComment(e.target.value)
+            }
+          />
           <Button>등록</Button>
         </InputSection>
         <CommentList>
@@ -132,7 +169,7 @@ const CreateTime = styled.span`
 `;
 
 const CommunityPost = styled.div`
-  min-height: 194px;
+  min-height: 104px;
   padding: 26px;
 `;
 

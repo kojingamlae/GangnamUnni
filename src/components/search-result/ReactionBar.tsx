@@ -4,8 +4,9 @@ import styled from "styled-components";
 import CommentIcon from "./Icon/Comment";
 import LikeIcon from "./Icon/Like";
 import ViewIcon from "./Icon/View";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FillLikeIcon from "./Icon/FillLike";
+import { useNavigate } from "react-router-dom";
 
 interface ReactionType {
   id: string;
@@ -19,11 +20,16 @@ const updateLike = async (id: string, like: number) => {
 };
 
 const ReactionBar = ({ like, comments, id }: ReactionType) => {
+  const navigate = useNavigate();
   const [likeCount, setLikeCount] = useState(like);
-  const [likeStatus, setLikeStatus] = useState(false);
+  const [postLikeStatus, setLikeStatus] = useState(false);
+
+  useEffect(() => {
+    setLikeCount(like);
+  }, [like]);
 
   const onClick = () => {
-    if (likeStatus) {
+    if (postLikeStatus) {
       updateLike(id, like - 1);
       setLikeCount((prev) => prev - 1);
     } else {
@@ -35,10 +41,10 @@ const ReactionBar = ({ like, comments, id }: ReactionType) => {
   return (
     <StyledReactionBar>
       <Button onClick={onClick}>
-        {likeStatus ? <FillLikeIcon /> : <LikeIcon />}
+        {postLikeStatus ? <FillLikeIcon /> : <LikeIcon />}
         좋아요 {likeCount}
       </Button>
-      <Button>
+      <Button onClick={() => navigate(`/community/${id}`)}>
         <CommentIcon />
         답변 {comments.length}
       </Button>
