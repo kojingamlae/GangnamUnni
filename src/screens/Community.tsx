@@ -24,7 +24,6 @@ export interface PostType {
   content: string;
   like: number;
   comments: string[];
-  likeStatus?: boolean;
 }
 
 const CommunityScreen = () => {

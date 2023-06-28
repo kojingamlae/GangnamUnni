@@ -27,6 +27,10 @@ const CommunityDetailScreen = () => {
   const postCollectionRef = collection(db, "post");
 
   const sendComment = () => {
+    if (postComment.length === 0) {
+      alert("댓글이 비어있습니다 !");
+      return;
+    }
     postData?.comments.push(postComment);
     if (postData?.comments) updateComments(String(id), postData?.comments);
     console.log(postData?.comments);
@@ -47,7 +51,6 @@ const CommunityDetailScreen = () => {
           content: data.content,
           like: data.like,
           comments: data.comments,
-          likeStatus: data.likeStatus,
         };
         setPostData(post);
       }
@@ -87,6 +90,7 @@ const CommunityDetailScreen = () => {
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               setPostComment(e.target.value)
             }
+            value={postComment}
           />
           <Button onClick={sendComment}>등록</Button>
         </InputSection>

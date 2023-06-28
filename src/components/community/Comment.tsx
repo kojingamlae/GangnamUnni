@@ -16,7 +16,7 @@ const Comment = ({ content }: CommentType) => {
         <Dot />
         <Level>Lv.1</Level>
         <Dot />
-        <CreateTime>5일 전</CreateTime>
+        <CreateTime>방금 전</CreateTime>
       </Row>
       <Content>{content}</Content>
     </StyledComment>
