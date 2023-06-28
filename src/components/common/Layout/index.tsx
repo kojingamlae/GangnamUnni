@@ -47,6 +47,9 @@ const AsideBox = styled.div`
   width: 360px;
   min-height: 100vh;
   margin-right: 16px;
+  @media only screen and (max-width: 724px) {
+    display: none;
+  }
 `;
 
 const BrandFilmBox = styled.div`
