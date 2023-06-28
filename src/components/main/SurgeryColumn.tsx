@@ -1,3 +1,4 @@
+import { COLUMN_LIST } from "data/list/column";
 import styled from "styled-components";
 import { color } from "styles/color";
 import flex from "utils/flex";
@@ -14,10 +15,9 @@ const SurgeryColumn = () => {
         </ViewAll>
       </ColumnHeader>
       <ColumnList>
-        <SurgeryItem />
-        <SurgeryItem />
-        <SurgeryItem />
-        <SurgeryItem />
+        {COLUMN_LIST.map((item) => (
+          <SurgeryItem {...item} />
+        ))}
       </ColumnList>
     </StyledSurgeryColumn>
   );
