@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { color } from "styles/color";
 import flex from "utils/flex";
@@ -5,6 +6,7 @@ import Image from "../Image";
 import ProfileIcon from "./Icon/Profile";
 
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <StyledHeader>
       <div />
@@ -17,7 +19,7 @@ const Header = () => {
           cursor="pointer"
         />
       </HeaderLogoWrapper>
-      <ProfileIcon cursor="pointer" />
+      <ProfileIcon cursor="pointer" onClick={() => navigate("/login")} />
     </StyledHeader>
   );
 };

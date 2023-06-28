@@ -7,6 +7,8 @@ import CommunityScreen from "screens/Community";
 import CommunityDetailScreen from "screens/CommunityDetail";
 import ColumnScreen from "screens/Column";
 import ScrollTop from "utils/scrollTop";
+import LoginScreen from "screens/Login";
+import SignupScreen from "screens/Signup";
 
 const App = () => {
   ScrollTop();
@@ -19,6 +21,8 @@ const App = () => {
       <Route path="/community" element={<CommunityScreen />} />
       <Route path="/community/:id" element={<CommunityDetailScreen />} />
       <Route path="/column" element={<ColumnScreen />} />
+      <Route path="/login" element={<LoginScreen />} />
+      <Route path="/signup" element={<SignupScreen />} />
     </Routes>
   );
 };
