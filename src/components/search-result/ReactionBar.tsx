@@ -5,6 +5,7 @@ import CommentIcon from "./Icon/Comment";
 import LikeIcon from "./Icon/Like";
 import ViewIcon from "./Icon/View";
 import { useState } from "react";
+import FillLikeIcon from "./Icon/FillLike";
 
 interface ReactionType {
   id: string;
@@ -19,15 +20,22 @@ const updateLike = async (id: string, like: number) => {
 
 const ReactionBar = ({ like, comments, id }: ReactionType) => {
   const [likeCount, setLikeCount] = useState(like);
+  const [likeStatus, setLikeStatus] = useState(false);
 
   const onClick = () => {
-    updateLike(id, like + 1);
-    setLikeCount(like + 1);
+    if (likeStatus) {
+      updateLike(id, like - 1);
+      setLikeCount((prev) => prev - 1);
+    } else {
+      updateLike(id, like + 1);
+      setLikeCount((prev) => prev + 1);
+    }
+    setLikeStatus((prev) => !prev);
   };
   return (
     <StyledReactionBar>
       <Button onClick={onClick}>
-        <LikeIcon />
+        {likeStatus ? <FillLikeIcon /> : <LikeIcon />}
         좋아요 {likeCount}
       </Button>
       <Button>
