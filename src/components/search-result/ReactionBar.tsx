@@ -59,6 +59,7 @@ const StyledReactionBar = styled.div`
   padding: 0px 16px;
   justify-content: center;
   border-top: 1px solid #ececec;
+  border-bottom: 1px solid #ececec;
 `;
 
 const Button = styled.button`
